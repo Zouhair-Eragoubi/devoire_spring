@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="clavier" class="partie2.Clavier"></bean>
+    <bean id="ecran"   class="partie2.Ecran"></bean>
+    <bean id="souris"  class="partie2.Souris"></bean>
+    <bean id="tv"      class="partie2.TV"></bean>
+    <bean id="videoProjecteur" class="partie2.VideoProjecteur"></bean>
+    <bean id="hdmiAdapter" class="partie2.HDMIAdapter">
+        <constructor-arg name="hdmiInterface" ref="tv"></constructor-arg>
+    </bean>
+    <bean id="uniteCentral" class="partie2.UniteCentral">
+        <property name="usb" ref="clavier"></property>
+        <property name="vga" ref="hdmiAdapter"></property>
+    </bean>
+
+</beans>
